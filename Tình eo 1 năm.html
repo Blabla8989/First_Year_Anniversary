@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư Tình 1 Năm - Minimalist Scroll Reveal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dễ dàng thay đổi màu sắc */
+        :root {
+            --primary-color: #f06292; /* Hồng Tình Yêu */
+            --secondary-color: #ffb74d; /* Cam Ấm */
+            --text-dark: #37474f;
+            --text-light: #ffffff;
+            --glass-background: rgba(255, 255, 255, 0.15); /* Nền Glassmorphism */
+        }
+
+        /* Thiết lập cơ bản và Hiệu ứng nền */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #fce4ec 0%, #fff8e1 100%); /* Pastel Hồng & Vàng */
+            color: var(--text-dark);
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            /* Cấu hình Scroll Snap để cuộn mượt mà giữa các phần */
+            scroll-snap-type: y proximity;
+            scroll-behavior: smooth;
+        }
+
+        /* Tùy chỉnh Scrollbar theo phong cách tối giản */
+        body::-webkit-scrollbar { width: 8px; }
+        body::-webkit-scrollbar-thumb { background-color: var(--primary-color); border-radius: 10px; }
+        body::-webkit-scrollbar-track { background-color: #fce4ec; }
+
+        /* Các Section chính */
+        .section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 50px 20px;
+            scroll-snap-align: start; /* Dừng tại điểm bắt đầu của section */
+            position: relative;
+        }
+
+        /* Phần Mở Đầu - Tên và Ngày */
+        #intro {
+            background: linear-gradient(to top right, #f8bbd0, #ffecb3);
+        }
+
+        .intro-box {
+            animation: fadeInScale 2s ease-out forwards;
+        }
+
+        .intro-box h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5em;
+            color: var(--primary-color);
+            text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5);
+        }
+
+        .intro-box p {
+            font-weight: 300;
+            font-size: 1.2em;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+        }
+
+        .names-tag {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-top: 30px;
+        }
+
+        /* Hộp Glassmorphism cho các Kỷ Niệm */
+        .glass-card {
+            backdrop-filter: blur(10px); /* Hiệu ứng làm mờ */
+            background-color: var(--glass-background);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            margin: 40px auto;
+            color: var(--text-light);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+
+        .glass-card h2 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .glass-card p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            font-weight: 400;
+            color: #f48fb1
+        }
+
+        /* Tạo điểm nổi bật cho icon và title */
+        .glass-card .icon {
+            font-size: 3em;
+            margin-right: 15px;
+        }
+
+        /* Phần Kết Thúc */
+        #conclusion {
+            background: linear-gradient(to bottom left, #ffccbc, #ff8a80); /* Hồng Đỏ Ấn tượng */
+        }
+
+        #conclusion h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4em;
+            color: var(--text-light);
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            animation: heartbeat 2s infinite;
+        }
+
+        #conclusion p {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-top: 20px;
+            color: var(--text-light);
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ------------------ KEYFRAMES & CHUYỂN ĐỘNG ------------------ */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.1); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.1); }
+            70% { transform: scale(1); }
+        }
+        
+        /* Hiệu ứng bong bóng/trang trí nền */
+        .bubble {
+            position: absolute;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: floatBubble 10s infinite alternate;
+        }
+        .bubble:nth-child(1) { width: 150px; height: 150px; top: 10%; left: 5%; }
+        .bubble:nth-child(2) { width: 80px; height: 80px; top: 50%; right: 15%; animation-duration: 12s; }
+        .bubble:nth-child(3) { width: 200px; height: 200px; bottom: 5%; left: 30%; animation-duration: 8s; }
+
+        @keyframes floatBubble {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-50px) rotate(360deg); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
+    <section class="section" id="intro">
+        <div class="intro-box">
+            <p>CHÍNH THỨC</p>
+            <h1 data-aos="zoom-in" data-aos-duration="1500">1 NĂM BÊN NHAU!</h1>
+            <p>29/10/2024 → 29/10/2025</p>
+            <div class="names-tag" data-aos="fade-up" data-aos-delay="500">
+                Phan Nguyễn Nhật Uyên 👸 & 🤴 Lương Triều Quốc Vĩ
+            </div>
+        </div>
+        <a href="#moment1" style="margin-top: 50px; color: var(--primary-color); text-decoration: none; font-size: 1.2em;" data-aos="fade-up" data-aos-delay="1000">
+            Cuộn xuống để coi típ nhoa zịt :)))) 💖
+        </a>
+    </section>
+
+    <section class="section" id="moment1">
+        <div class="glass-card" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
+            <div style="display: flex; align-items: center;">
+                <span class="icon">📸</span>
+                <h2>Chụp photobooth chung nè!!!</h2>
+            </div>
+            <p>Kỷ niệm đầu tiên: Thì em là người đã dắt tay anh vô con đường chụp phòng này:)))) bữa đầu thì anh nhát lúm!!! hong dám pose dáng... Còn mấy bữa sau em thấy anh quậy nát nước lun hong MOHAHAHAHAHAHA!</p>
+        </div>
+    </section>
+
+    <section class="section" id="moment2">
+        <div class="glass-card" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
+            <div style="display: flex; align-items: center;">
+                <span class="icon">🍿</span>
+                <h2>Coi phim chung nè!!!</h2>
+            </div>
+            <p>Quá chời quá đất coi luonggggggggggggggg... Nhưng mà dạo gần đây 2 đứa ít đi lại tại cũm gần năm cuối ròi nên là 2 đứa ráng học để kím việc làm ròi có việc làm ròi coi phim đã luonggggggg</p>
+        </div>
+    </section>
+
+    <section class="section" id="moment3">
+        <div class="glass-card" data-aos="fade-up" data-aos-offset="300" data-aos-easing="ease-in-sine">
+            <div style="display: flex; align-items: center;">
+                <span class="icon">🍧</span>
+                <h2>Ăn Bingsu chung nè!!!</h2>
+            </div>
+            <p>Em cũng là người đầu tiên khai sáng anh món này:))))) nó ngon với nó kỉ niệm lắm!!! Bữa nào rảnh đi ăn nua em êiiiiii</p>
+        </div>
+    </section>
+
+    <section class="section" id="moment4">
+        <div class="glass-card" data-aos="zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
+            <div style="display: flex; align-items: center;">
+                <span class="icon">🙏</span>
+                <h2>Đi chùa chung nè!!!</h2>
+            </div>
+            <p>Tui cũm hong ngờ là tui rủ ròi em cũm đi thiệt lun:)))) Chắc tại cũm zì cái này mà tui thương em nhìu hơn tại em chấp nhận sở thích của tui :3</p>
+        </div>
+    </section>
+    
+    <section class="section" id="moment5">
+        <div class="glass-card" data-aos="fade-down" data-aos-offset="300" data-aos-easing="ease-in-sine">
+            <div style="display: flex; align-items: center;">
+                <span class="icon">☔</span>
+                <h2>Lội mưa chung nè!!!</h2>
+            </div>
+            <p>Thoi:)))) lội mưa thì quá nhìu ròi nhưng lần lội mưa nhớ nhất là lần đi dạo công viên đầu tiên của 2 đứa :))))) người ta nói làm đám tiệc hay mua cái gì mới có mưa là hên... nên 2 đứa được ông trời chứng giám ròi đó:))))</p>
+        </div>
+    </section>
+
+    <section class="section" id="conclusion">
+        <p style="font-size: 1.8em; color: var(--text-light);" data-aos="fade-up">Gửi người anh yêu thương nhấtttttt</p>
+        <h2 data-aos="zoom-in" data-aos-delay="500">Yêu em nhìuuuuuuuuuu!</h2>
+        <p data-aos="fade-up" data-aos-delay="1000">Kỷ niệm 1 năm bên nhau! Hãy giữ mãi ngọn lửa này và cùng nhau viết nên những chương tiếp theo nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        // Tắt animation trên thiết bị di động để tối ưu hiệu năng
+        disable: 'mobile', 
+        // Lặp lại animation khi cuộn lên/xuống
+        once: false, 
+        // Thời gian animation mặc định
+        duration: 1000, 
+      });
+    </script>
+
+</body>
+</html>
